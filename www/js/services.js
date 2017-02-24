@@ -43,7 +43,7 @@ angular.module('starter.services', [])
         loadUrl: function (siteId, articleId) {
             this.genUrl = urlBase.replace(/%SITE_ID%/g, siteId);
             this.genUrl = this.genUrl.replace(/%ARTICLE_ID%/g, articleId);
-            console.log(this.genUrl);
+            return true;
         },
         getMethod:function (url, callback) {
             console.log(this.genUrl);

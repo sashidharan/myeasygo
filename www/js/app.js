@@ -43,7 +43,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     url: '/info',
     abstract: false,
     templateUrl: 'templates/info.html',    
-    controller: 'infoCtrl'
+    // controller: 'infoCtrl'
   });
   /*// setup an abstract state for the tabs directive
     .state('tab', {

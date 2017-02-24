@@ -13,14 +13,22 @@ angular.module('starter.controllers', [])
 
 .controller('scanCtrl', function($scope, $state, $stateParams, AjaxMethod, $cordovaBarcodeScanner, $ionicLoading) {
     $scope.scanBarcode = function() {
+        /*if(AjaxMethod.loadUrl($stateParams.siteId, 30061984)) {
+            $state.go('info');
+        } else {
+            alert('Invalid QR code');
+        }*/
         // AjaxMethod.loadUrl($stateParams.siteId, 30061984);
         // $state.go('info');
         $cordovaBarcodeScanner
             .scan()
             .then(function(barcodeData) {
                 // alert(barcodeData.text+'---'+barcodeData.format+'----'+barcodeData.cancelled);
-                AjaxMethod.loadUrl($stateParams.siteId, barcodeData.text);
-                $state.go('info');
+                if(AjaxMethod.loadUrl($stateParams.siteId, barcodeData.text)) {
+                    $state.go('info');
+                } else {
+                    alert('Invalid QR code');
+                }
                 // console.log(barcodeData);
             }, function(error) {
                 console.log('erroe->', error)
