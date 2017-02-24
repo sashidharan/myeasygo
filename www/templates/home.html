@@ -1,0 +1,9 @@
+<ion-view view-title="Titles">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="article in articles" ng-class="article.style" class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap" ng-click="redirect(article)">
+	      <img ng-src="{{article.img}}" />
+	  </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,7 @@
+{
+  "directory": "www/lib",
+  "registry": "http://bower.herokuapp.com",
+  "proxy": "http://603936:sa$hi18021988@proxy.cognizant.com:6050",
+  "https-proxy": "http://603936:sa$hi18021988@proxy.cognizant.com:6050",
+  "strict-ssl": false
+}

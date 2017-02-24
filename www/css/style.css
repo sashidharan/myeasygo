@@ -1,0 +1,24 @@
+/* Empty. Add your own CSS if you like */
+.bristol {
+	background-color: #114A9F;
+}
+.hulldaily {
+	background-color: #9d0d15;
+}
+.nottingham {
+	background-color: #145c00;
+}
+
+.bristol > a.item-content, .hulldaily > a.item-content, .nottingham > a.item-content {
+	background-color: transparent !important;
+}
+.item-avatar > img:first-child, .item-avatar .item-image, .item-avatar .item-content > img:first-child, .item-avatar .item-content .item-image, .item-avatar-left > img:first-child, .item-avatar-left .item-image, .item-avatar-left .item-content > img:first-child, .item-avatar-left .item-content .item-image {
+	position: initial !important;
+	top: 16px;
+	left: 16px;
+	max-width: 100% !important;
+	max-height: 100% !important;
+	width: 100%;
+	height: 100%;
+	border-radius: 0px !important;
+}

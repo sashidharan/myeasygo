@@ -1,0 +1,49 @@
+<ion-view view-title="Info">
+    <ion-content ng-init="loadData()">
+        <ion-list no-border>
+            <ion-item ng-click="openModal('story')">
+                <i class="icon ion-planet"></i> Full Articles
+            </ion-item>
+            <!-- <ion-item ng-click="openModal()">
+                <i class="icon ion-leaf"></i> Videos
+            </ion-item> -->
+            <ion-item ng-click="openModal('img')">
+                <i class="icon ion-camera"></i> Images
+            </ion-item>
+            <ion-item ng-click="openModal('cmts')">
+                <i class="icon ion-camera"></i> Comments
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <script id="my-modal.html" type="text/ng-template">
+        <ion-modal-view>
+            <ion-header-bar>
+                <h1 class="title" ng-bind='articles.author'></h1>
+                <button class="button button-clear button-dark" ng-click="modal.hide()">Cancel</button>
+            </ion-header-bar>
+            <ion-content>
+                <div class="list card" ng-if="dataType === 'story'">
+                    <div class="item item-text-wrap">
+                        <h2 ng-bind="articles.heading"></h2>
+                    </div>
+                    <div class="item item-body" ng-bind-html="details"></div>
+                </div>
+                <div class="list card" ng-if="dataType === 'img'" ng-repeat="data in details track by $index">
+                    <div class="item item-text-wrap">
+                        <h3 ng-bind="data.caption"></h3>
+                    </div>
+                    <div class="item item-image">
+                        <img ng-src="{{data.url}}">
+                    </div>
+                </div>
+                <div class="list" ng-if="dataType === 'cmts'">
+                    <div class="item item-thumbnail-left" ng-repeat="data in details track by $index">
+                        <img ng-src="{{data.created_by_user_avatar}}">
+                        <h2 ng-bind="data.created_by_user_name"></h2>
+                        <div class="item-text-wrap" ng-bind-html="data.body"></div>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-modal-view>
+    </script>
+</ion-view>
