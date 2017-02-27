@@ -13,8 +13,8 @@ angular.module('starter.controllers', [])
 
 .controller('scanCtrl', function($scope, $state, $stateParams, AjaxMethod, $cordovaBarcodeScanner, $ionicLoading) {
     $scope.scanBarcode = function() {        
-        $scope.navigateTo({text:30061984});
-        /*$cordovaBarcodeScanner
+        // $scope.navigateTo({text:30061984});
+        $cordovaBarcodeScanner
             .scan()
             .then(function(barcodeData) {
                 if(!barcodeData.cancelled) {
@@ -24,7 +24,7 @@ angular.module('starter.controllers', [])
                 }
             }, function(error) {
                 alert("Can't Scan the Code");
-            });*/
+            });
         /*$cordovaBarcodeScanner
             .encode(BarcodeScanner.Encode.TEXT_TYPE, "http://www.nytimes.com")
             .then(function(success) {
