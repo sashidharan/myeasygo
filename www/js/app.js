@@ -34,11 +34,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     templateUrl: 'templates/home.html',
     controller: 'DashCtrl'
   })
-    .state('scan', {
+    /*.state('scan', {
     url: '/scan/:siteId',
     templateUrl: 'templates/scanner.html',
     // controller: 'scanCtrl'
-  })
+  })*/
     .state('info', {
     url: '/info',
     abstract: false,

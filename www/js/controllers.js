@@ -1,47 +1,36 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $rootScope, $state, Chats, AjaxMethod, $ionicHistory) {
+.controller('DashCtrl', function($scope, $rootScope, $state, Chats, AjaxMethod, $cordovaBarcodeScanner, $ionicHistory) {
     $rootScope.goHome = function() {
         $state.go('home');
         $ionicHistory.removeBackView()
     };
     $scope.articles = Chats.all();
     $scope.redirect = function(urlRequest) {
-    $state.go(urlRequest.url, {siteId:urlRequest.siteId});
-    };
-})
-
-.controller('scanCtrl', function($scope, $state, $stateParams, AjaxMethod, $cordovaBarcodeScanner, $ionicLoading) {
-    $scope.scanBarcode = function() {        
-        // $scope.navigateTo({text:30061984});
-        $cordovaBarcodeScanner
+        // $state.go(urlRequest.url, {siteId:urlRequest.siteId});
+        // $scope.navigateTo({siteId:urlRequest.siteId, text:30061984});
+        if(AjaxMethod.loadUrl(urlRequest.siteId, 30061984)) {
+            $state.go('info');
+        } else {
+            alert('Invalid QR code');
+        }
+        /*$cordovaBarcodeScanner
             .scan()
             .then(function(barcodeData) {
-                if(!barcodeData.cancelled) {
-                    $scope.navigateTo(barcodeData);
+                if(!barcodeData.cancelled) {                    
+                    alert(barcodeData.format);
+                    if(AjaxMethod.loadUrl(urlRequest.siteId, barcodeData.text)) {
+                        $state.go('info');
+                    } else {
+                        alert('Invalid QR code');
+                    }
                 } else {
                     alert("Can't Scan the Code");
                 }
             }, function(error) {
                 alert("Can't Scan the Code");
-            });
-        /*$cordovaBarcodeScanner
-            .encode(BarcodeScanner.Encode.TEXT_TYPE, "http://www.nytimes.com")
-            .then(function(success) {
-                // Success!
-                console.log('encode---->',success)
-            }, function(error) {
-                // An error occurred
-        });*/
+            });*/      
     };
-
-    $scope.navigateTo = function (barcodeData) {
-        if(AjaxMethod.loadUrl($stateParams.siteId, barcodeData.text)) {
-            $state.go('info');
-        } else {
-            alert('Invalid QR code');
-        }
-    }
 })
 
 .controller('infoCtrl', function($scope, $ionicModal, $ionicLoading, $sce, AjaxMethod) {
